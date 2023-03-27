@@ -8,5 +8,9 @@ class HeroPowersController < ApplicationController
       render json: { error: hero_power.errors.full_messages.join(', ') }, status: :unprocessable_entity
     end
   end
-  
+  private
+  def hero_power_params
+    params.require(:hero_power).permit(:strength, :power_id, :hero_id)
+  end
 end
+
